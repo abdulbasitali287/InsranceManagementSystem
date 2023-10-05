@@ -18,6 +18,13 @@
     </div>
     <!-- header end -->
 
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Sucess!</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+
 <!-- form start -->
 <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -29,7 +36,6 @@
                       <table class="table table-bordered">
                         <thead>
                           <tr>
-                            <th><h6>Customer Name</h6></th>
                             <th><h6>CusOrLead</h6></th>
                             <th><h6>Account Name</h6></th>
                             <th><h6>EFT</h6></th>
@@ -43,7 +49,6 @@
                           @if ($data)
                             @foreach ($data as  $item)
                             <tr>
-                              <td> {{ $item->name }} </td>
                               <td> {{ $item->cus_or_lead }} </td>
                               <td> {{ $item->account_name }} </td>
                               <td> {{ $item->eft }} </td>

@@ -29,15 +29,35 @@ class Customer extends Model
         return $this->hasMany(DriverDetail::class,'customer_id');
     }
 
-    public function customer_other_details(){
-        return $this->hasMany(CustomerOtherDetail::class,'customer_id');
+    public function physical_address(){
+        return $this->hasMany(PhysicalAddress::class,'customer_id');
+    }
+
+    public function mailing_address(){
+        return $this->hasMany(MailingAddress::class,'customer_id');
+    }
+
+    public function work_bussiness_address(){
+        return $this->hasMany(WorkBussinessAddress::class,'customer_id');
     }
 
     public function insured_items(){
         return $this->hasMany(InsuredItem::class,'customer_id');
     }
+    
+    public function lien_info(){
+        return $this->hasMany(LienInfo::class,'customer_id');
+    }
 
     public function premium_calculation(){
         return $this->hasMany(PremiumCalculation::class,'customer_id');
     }
+    
+    public function date_and_amount(){
+        return $this->hasMany(DatesAndAmount::class,'customer_id');
+    }
+    
+    // public function customer_other_details(){
+    //     return $this->hasMany(CustomerOtherDetail::class,'customer_id');
+    // }
 }

@@ -25,6 +25,16 @@ return new class extends Migration
             $table->foreign('customer_id')->references('cus_id')->on('customers')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
+
+        // $mailingAddressData = [
+        //     'ma_street_address' => $request->input('ma_street_address'),
+        //     'ma_city' => $request->input('ma_city'),
+        //     'ma_country' => $request->input('ma_country'),
+        //     'ma_state' => $request->input('ma_state'),
+        //     'ma_zip_code' => $request->input('ma_zip_code'),
+        //     'ma_rent_or_own' => $request->input('ma_rent_or_own'),
+        //     'customer_id' => 1
+        // ];
     }
 
     /**

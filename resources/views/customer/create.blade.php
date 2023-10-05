@@ -3,11 +3,12 @@
 
 <div class="content-wrapper">
     
-    <!-- {{ Form::open([ 'url' => $url, 'method' => $method ]) }}
-        <input type="hidden" name="form_type" value="customer_form"> -->
-    
-        <!-- {{ Form::close() }} -->
-
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Sucess!</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
   <!-- 1st card -->
   {{ Form::open([ 'url' => $url, 'method' => $method ]) }}
   @method($method)
@@ -522,7 +523,7 @@
                             <div class="form-group row">
                             {{ Form::label("ein if applies","EIN (if applies):" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('ein_no[]', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ein_no[]', null , ["class" => "form-control"]) }}
                                 @error("ein_no")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -533,7 +534,7 @@
                             <div class="form-group row">
                             {{ Form::label("bussiness or work phone","Business / Work Phone" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('bsn_work_phone[]', null , ["class" => "form-control"]) }}
+                                {{ Form::text('bsn_work_phone[]', null , ["class" => "form-control"]) }}
                                 @error("bsn_work_phone")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -832,7 +833,7 @@
                             <div class="form-group row">
                             {{ Form::label("Insurance company","Insurance Company" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_com', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_com[]', null , ["class" => "form-control"]) }}
                                 @error("ins_com")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -843,7 +844,7 @@
                             <div class="form-group row">
                             {{ Form::label("policy_no","Policy Number" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_policy_no', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_policy_no[]', null , ["class" => "form-control"]) }}
                                 @error("ins_policy_no")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -859,7 +860,7 @@
                             <div class="form-group row">
                             {{ Form::label("type","Type" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::select('ins_type', ['1-3 month' => '1-3 month' ,'6-12 month' => '6-12 month'] , null , ["class" => "form-control",'placeholder' => 'Type 1-3-6-12 (Months)']) }}
+                                {{ Form::select('ins_type[]', ['1-3 month' => '1-3 month' ,'6-12 month' => '6-12 month'] , null , ["class" => "form-control",'placeholder' => 'Type 1-3-6-12 (Months)']) }}
                                 @error("ins_type")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -870,7 +871,7 @@
                             <div class="form-group row">
                             {{ Form::label("insurance year","Year" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_year', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_year[]', null , ["class" => "form-control"]) }}
                                 @error("ins_year")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -886,7 +887,7 @@
                             <div class="form-group row">
                             {{ Form::label("insurance make","Make" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_make', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_make[]', null , ["class" => "form-control"]) }}
                                 @error("ins_make")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -897,7 +898,7 @@
                             <div class="form-group row">
                             {{ Form::label("insurance model","Model" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_model', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_model[]', null , ["class" => "form-control"]) }}
                                 @error("ins_model")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -913,7 +914,7 @@
                             <div class="form-group row">
                             {{ Form::label("insurance vin no","VIN Number" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('ins_vin_no', null , ["class" => "form-control"]) }}
+                                {{ Form::text('ins_vin_no[]', null , ["class" => "form-control"]) }}
                                 @error("ins_vin_no")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -924,7 +925,7 @@
                             <div class="form-group row">
                             {{ Form::label("liability limit","Liability Limits" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('liability_limit', null , ["class" => "form-control"]) }}
+                                {{ Form::text('liability_limit[]', null , ["class" => "form-control"]) }}
                                 @error("liability_limit")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -940,7 +941,7 @@
                             <div class="form-group row">
                             {{ Form::label("comp deductible","Comp (OTC) Deductible" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('comp_deductible', null , ["class" => "form-control"]) }}
+                                {{ Form::text('comp_deductible[]', null , ["class" => "form-control"]) }}
                                 @error("comp_deductible")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -951,7 +952,7 @@
                             <div class="form-group row">
                             {{ Form::label("collison deductible","Collision Deductible" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('collison_deductible', null , ["class" => "form-control"]) }}
+                                {{ Form::text('collison_deductible[]', null , ["class" => "form-control"]) }}
                                 @error("collison_deductible")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -967,7 +968,7 @@
                             <div class="form-group row">
                             {{ Form::label("um_uim_bi_limit","UM/UIM BI Limit" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('um_uim_bi_limit', null , ["class" => "form-control"]) }}
+                                {{ Form::text('um_uim_bi_limit[]', null , ["class" => "form-control"]) }}
                                 @error("um_uim_bi_limit")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -978,7 +979,7 @@
                             <div class="form-group row">
                             {{ Form::label("um_uim_pd","UM/UIM PD" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('um_uim_pd', null , ["class" => "form-control"]) }}
+                                {{ Form::text('um_uim_pd[]', null , ["class" => "form-control"]) }}
                                 @error("um_uim_pd")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -994,7 +995,7 @@
                             <div class="form-group row">
                             {{ Form::label("rent amount","Rental Amount" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('rent_amount', null , ["class" => "form-control"]) }}
+                                {{ Form::number('rent_amount[]', null , ["class" => "form-control"]) }}
                                 @error("rent_amount")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1005,7 +1006,7 @@
                             <div class="form-group row">
                             {{ Form::label("towing amount","Towing Amount" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('towing_amount', null , ["class" => "form-control"]) }}
+                                {{ Form::number('towing_amount[]', null , ["class" => "form-control"]) }}
                                 @error("towing_amount")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1021,7 +1022,7 @@
                             <div class="form-group row">
                             {{ Form::label("gap","Gap Y/N" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('gap', null , ["class" => "form-control"]) }}
+                                {{ Form::text('gap[]', null , ["class" => "form-control"]) }}
                                 @error("gap")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1032,7 +1033,7 @@
                             <div class="form-group row">
                             {{ Form::label("pip amount","PIP Amount" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('pip_amount', null , ["class" => "form-control"]) }}
+                                {{ Form::number('pip_amount[]', null , ["class" => "form-control"]) }}
                                 @error("pip_amount")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1048,7 +1049,7 @@
                             <div class="form-group row">
                             {{ Form::label("med amount","Med Amount" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::number('med_amount', null , ["class" => "form-control"]) }}
+                                {{ Form::number('med_amount[]', null , ["class" => "form-control"]) }}
                                 @error("med_amount")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1068,7 +1069,7 @@
                             <div class="form-group row">
                             {{ Form::label("item number","Item No." , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_item_no', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_item_no[]', null , ["class" => "form-control"]) }}
                                 @error("lh_item_no")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1079,7 +1080,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder account","Lien Account" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_account', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_account[]', null , ["class" => "form-control"]) }}
                                 @error("lh_account")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1095,7 +1096,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder address","Lien Holder Address" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_address', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_address[]', null , ["class" => "form-control"]) }}
                                 @error("lh_address")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1106,7 +1107,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder city","City" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_city', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_city[]', null , ["class" => "form-control"]) }}
                                 @error("lh_city")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1122,7 +1123,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder state","State" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_state', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_state[]', null , ["class" => "form-control"]) }}
                                 @error("lh_state")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1133,7 +1134,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder zip","Zip" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_zip', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_zip[]', null , ["class" => "form-control"]) }}
                                 @error("lh_zip")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1149,7 +1150,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder contact name","Lien Contact Name" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_con_name', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_con_name[]', null , ["class" => "form-control"]) }}
                                 @error("lh_con_name")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1160,7 +1161,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder phone no","Lien Holder Phone" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::text('lh_phone_no', null , ["class" => "form-control"]) }}
+                                {{ Form::text('lh_phone_no[]', null , ["class" => "form-control"]) }}
                                 @error("lh_phone_no")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1176,7 +1177,7 @@
                             <div class="form-group row">
                             {{ Form::label("lein holder email","Lien Holder Email" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
-                                {{ Form::email('lh_email', null , ["class" => "form-control"]) }}
+                                {{ Form::email('lh_email[]', null , ["class" => "form-control"]) }}
                                 @error("lh_email")
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -1430,6 +1431,9 @@
               function moreDrivers(){
                   var driverSectionCloning = document.getElementById("driverSection");
                   var cloned = driverSectionCloning.cloneNode(true);
+                  console.log(cloned.querySelectorAll('input').forEach((e) => {
+                    console.log(e.value = "");
+                  }));
                 //   console.log(cloned.querySelectorAll('input').forEach(function (e){
                 //     console.log(e.getAttribute("name"));
                 //   }));
@@ -1438,6 +1442,9 @@
               function moreILP(){
                   var premiumSectionCloning = document.getElementById("cloneILPContainer");
                   var cloned = premiumSectionCloning.cloneNode(true);
+                  console.log(cloned.querySelectorAll('input').forEach((e) => {
+                    console.log(e.value = "");
+                  }));
                   premiumSectionCloning.insertAdjacentElement("afterend",cloned);
                 }
             //   function morePremiums(){
