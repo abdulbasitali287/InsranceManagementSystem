@@ -1,0 +1,437 @@
+{{-- premium calculation section sart --}}
+    <section class="mb-2 clone" id="primiumCalculations">
+        <div class="card" id="cloneContainer">
+            <div class="card-body">
+                <h4 class="card-title">Premium Calculation</h4>
+                <p class="card-description">Premium Calculation Fields</p>
+                <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("base premium","Base Premium" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('base_premium[]', null , ["class" => "form-control"]) }}
+                                @error("base_premium")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("crime prevention fee","Crime Prevention Fee" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('crime_prevention_fee[]', null , ["class" => "form-control"]) }}
+                                @error("crime_prevention_fee")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("policy fee","Policy Fee" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('policy_fee[]', null , ["class" => "form-control"]) }}
+                                @error("policy_fee")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("Agency fee","Agency Fee" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('agency_fee[]', null , ["class" => "form-control"]) }}
+                                @error("agency_fee")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("Other Fees","Other Fees" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('other_fees[]', null , ["class" => "form-control"]) }}
+                                @error("other_fees")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("total premium","Total Premium" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('total_premium[]', null , ["class" => "form-control"]) }}
+                                @error("total_premium")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("expiry date","Expiray Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('exp_date[]', null , ["class" => "form-control"]) }}
+                                @error("exp_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    row end
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("reminder date","Reminder Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('reminder_date[]', null , ["class" => "form-control"]) }}
+                                @error("reminder_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("cancellation notice date","Cancellation Notice Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('canc_notice_date[]', null , ["class" => "form-control"]) }}
+                                @error("canc_notice_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("due date","Due Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('pre_due_date[]', null , ["class" => "form-control"]) }}
+                                @error("pre_due_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("next amount due","Next Amount Due" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('next_amount_due[]', null , ["class" => "form-control"]) }}
+                                @error("next_amount_due")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+    
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("paid date","Paid Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('pre_paid_date[]', null , ["class" => "form-control"]) }}
+                                @error("pre_paid_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("new amount due","New Amount Due" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::number('new_amount_due[]', null , ["class" => "form-control"]) }}
+                                @error("new_amount_due")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("new due date","New Due Date" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::date('pre_new_due_date[]', null , ["class" => "form-control"]) }}
+                                @error("pre_new_due_date")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("customer id","Customer" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                <select name="customer_id" class="form-control">
+                                    <option value="">Select customer</option>
+                                    @foreach ($customers as $customer)
+                                        <option value="{{ $customer->cus_id }}">{{ $customer->name }}</option>
+                                    @endforeach
+                                </select>
+                                {{-- {{ Form::select("customer_id[]", $customers->pluck('name','cus_id') , null , ["class" => "form-control"]) }} --}}
+                                @error("customer_id")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-9" id="values-container">
+                            <button type="button" class="btn btn-sm btn-success p-2 my-2" id="moreBtn" onclick="morePremiums()">Add More Premium Calculations</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div> {{-- card body --}}
+            </div> {{-- card close --}}
+        </section>
+        {{-- premium calculation section end --}}
+
+
+
+
+
+        {{-- customer other detail start --}}
+    <section class="clone my-2">
+        <div class="card" id="cloneContainer">
+            <div class="card-body">
+                <h4 class="card-title">Customer Other Details</h4>
+                <p class="card-description">customer other detail Fields</p>
+                <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("physical address","Physical Address" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('phy_address', null , ["class" => "form-control"]) }}
+                                @error("phy_address")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("city","City" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('city', null , ["class" => "form-control"]) }}
+                                @error("city")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("country","Country" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('country', null , ["class" => "form-control"]) }}
+                                @error("country")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("state","State" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('state', null , ["class" => "form-control"]) }}
+                                @error("state")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("zip code","Zip Code" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('zip_code', null , ["class" => "form-control"]) }}
+                                @error("zip_code")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("employee or bussiness name","Employee / Bussiness Name" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('emp_or_bsn_name', null , ["class" => "form-control"]) }}
+                                @error("emp_or_bsn_name")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("type of bussiness or work","Type of Bussiness / Work" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('type_of_bsn_or_work', null , ["class" => "form-control"]) }}
+                                @error("type_of_bsn_or_work")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("rent or own","Rent / Own" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('rent_or_own', null , ["class" => "form-control"]) }}
+                                @error("rent_or_own")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("mailing address","Mailing Address" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('mailing_addr', null , ["class" => "form-control"]) }}
+                                @error("mailing_addr")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("ein no","EIN #" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('ein_no', null , ["class" => "form-control"]) }}
+                                @error("ein_no")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("bsn_or_work_phone","Bussiness / Work Phone" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('bsn_or_work_phone', null , ["class" => "form-control"]) }}
+                                @error("bsn_or_work_phone")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("bussiness website","Bussiness Website" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('bsn_web', null , ["class" => "form-control"]) }}
+                                @error("bsn_web")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("bussiness address","Bussiness Address" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                {{ Form::text('bsn_addr', null , ["class" => "form-control"]) }}
+                                @error("bsn_addr")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-6">
+                            <div class="form-group row">
+                            {{ Form::label("customer id","Customer" , ["class" => "col-sm-3 col-form-label"]) }}
+                            <div class="col-sm-9">
+                                <select name="customer_id[]" class="form-control">
+                                    <option value="">Select customer</option>
+                                    @foreach ($customers as $customer)
+                                        <option value="{{ $customer->cus_id }}">{{ $customer->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error("customer_id")
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <!-- row end -->
+                </div> {{-- card body --}}
+            </div> {{-- card close --}}
+    </section>
+    {{-- customer other detail end --}}
