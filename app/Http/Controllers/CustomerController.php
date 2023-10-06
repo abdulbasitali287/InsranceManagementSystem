@@ -15,6 +15,7 @@ use App\Models\PremiumCalculation;
 use Illuminate\Support\Facades\DB;
 use App\Models\CustomerOtherDetail;
 use App\Models\WorkBussinessAddress;
+use App\Http\Requests\CustomerFormRequest;
 
 class CustomerController extends Controller
 {
@@ -50,110 +51,38 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'cus_or_lead' => 'required',
-            'account_name' => 'required',
-            'eft' => 'required',
-            'cus_type' => 'required',
-            'status' => 'required',
-            'refferal_src' => 'required',
-            'pay_type' => 'required',
-            'carrier_name' => 'required',
-            'policy_no' => 'required',
-            'due_amount' => 'required',
-            'due_date' => 'required',
-            'paid_date' => 'required',
-            'mode_of_pay' => 'required',
-            'received_by' => 'required',
-            'new_due_amount' => 'required',
-            'new_due_date' => 'required',
-            'driver_name' => 'required',
-            'relationship' => 'required',
-            'f_name' => 'required',
-            'm_name' => 'required',
-            'l_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'gender' => 'required',
-            'dob' => 'required',
-            'ss_no' => 'required',
-            'id_no' => 'required',
-            'id_type' => 'required',
-            'emp_or_bsn_name' => 'required',
-            'type_of_bsn_or_work' => 'required',
-            'ein_no' => 'required',
-            'bsn_work_phone' => 'required',
-            'pa_street_address' => 'required',
-            'pa_city' => 'required',
-            'pa_country' => 'required',
-            'pa_state' => 'required',
-            'pa_zip_code' => 'required',
-            'pa_rent_or_own' => 'required',
-            'ma_street_address' => 'required',
-            'ma_city' => 'required',
-            'ma_country' => 'required',
-            'ma_state' => 'required',
-            'ma_zip_code' => 'required',
-            'ma_rent_or_own' => 'required',
-            'wb_street_address' => 'required',
-            'wb_city' => 'required',
-            'wb_country' => 'required',
-            'wb_state' => 'required',
-            'wb_zip_code' => 'required',
-            'wb_rent_or_own' => 'required',
-            'ins_com' => 'required',
-            'ins_policy_no' => 'required',
-            'ins_type' => 'required',
-            'ins_year' => 'required',
-            'ins_make' => 'required',
-            'ins_model' => 'required',
-            'ins_vin_no' => 'required',
-            'liability_limit' => 'required',
-            'comp_deductible' => 'required',
-            'collison_deductible' => 'required',
-            'um_uim_bi_limit' => 'required',
-            'um_uim_pd' => 'required',
-            'rent_amount' => 'required',
-            'towing_amount' => 'required',
-            'gap' => 'required',
-            'pip_amount' => 'required',
-            'med_amount' => 'required',
-            'lh_item_no' => 'required',
-            'lh_account' => 'required',
-            'lh_address' => 'required',
-            'lh_city' => 'required',
-            'lh_state' => 'required',
-            'lh_zip' => 'required',
-            'lh_con_name' => 'required',
-            'lh_phone_no' => 'required',
-            'lh_email' => 'required',
-            'lh_item_no' => 'required',
-            'base_premium' => 'required',
-            'crime_prevention_fee' => 'required',
-            'policy_fee' => 'required',
-            'agency_fee' => 'required',
-            'other_fees' => 'required',
-            'total_premium' => 'required',
-            'effective_date' => 'required',
-            'expiry_date' => 'required',
-            'reminder_date' => 'required',
-            'canc_notice_date' => 'required',
-            'da_due_date' => 'required',
-            'da_date_paid' => 'required',
-            'next_amount_due' => 'required',
-            'new_amount_due' => 'required',
-        ]);
+    public function store(CustomerFormRequest $request)
+    {   
+        $request->validated();
+        // $driver = [];
+        // for ($i=0; $i < count($request->input('driver_name')) ; $i++) { 
+        //     $driver = $request->input('driver_name')[$i];
+        //     echo $request->input('relationship')[$i];
+        //     echo $request->input('f_name')[$i];
+        //     echo $request->input('m_name')[$i];
+        //     echo $request->input('l_name')[$i];
+        //     echo $request->input('email')[$i];
+        //     echo $request->input('phone')[$i];
+        //     echo $request->input('gender')[$i];
+        //     echo $request->input('dob')[$i];
+        //     echo $request->input('ss_no')[$i];
+        //     echo $request->input('id_no')[$i];
+        //     echo $request->input('id_type')[$i];
+            
+        // }
+        // echo "<pre>";
+        // print_r($driver);
+        // echo "</pre>";
+        // die();
         // $validated = $request->validate([
         //     // customer or lead info validations ==============
-            // 'cus_or_lead' => 'required',
-            // 'account_name' => 'required',
-            // 'cus_name' => 'required',
-            // 'eft' => 'required',
-            // 'cus_type' => 'required',
-            // 'status' => 'required',
-            // 'refferal_src' => 'required',
+        //     'cus_or_lead' => 'required',
+        //     'account_name' => 'required',
+        //     'cus_name' => 'required',
+        //     'eft' => 'required',
+        //     'cus_type' => 'required',
+        //     'status' => 'required',
+        //     'refferal_src' => 'required',
         //     // payment detail validations =====================
         //     'pay_type' => 'required',
         //     'carrier_name' => 'required',
@@ -166,18 +95,18 @@ class CustomerController extends Controller
         //     'new_due_amount' => 'required',
         //     'new_due_date' => 'required',
         //     // driver detail validations ========================
-        //      'driver_name.*' => 'required',
-        //      'relationship.*' => 'required',
-        //      'f_name.*' => 'required',
-        //      'm_name.*' => 'required',
-        //      'l_name.*' => 'required',
-        //      'email.*' => 'required',
-        //      'phone.*' => 'required',
-        //      'gender.*' => 'required',
-        //      'dob.*' => 'required',
-        //      'ss_no.*' => 'required',
-        //      'id_no.*' => 'required',
-        //      'id_type.*' => 'required',
+        //      $driver => 'required',
+        //      'relationship' => 'required',
+        //      'f_name' => 'required',
+        //      'm_name' => 'required',
+        //      'l_name' => 'required',
+        //      'email' => 'required',
+        //      'phone' => 'required',
+        //      'gender' => 'required',
+        //      'dob' => 'required',
+        //      'ss_no' => 'required',
+        //      'id_no' => 'required',
+        //      'id_type' => 'required',
         //     // // customer other details validations ===================
         //     'phy_address' => 'required',
         //     'city' => 'required',
@@ -236,7 +165,7 @@ class CustomerController extends Controller
         //     // ============================
         //     // 'customer_id' => 'required',
         // ]);
-        
+
         $customer = Customer::create([
             'cus_or_lead' => $request->input('cus_or_lead'),
             'account_name' => $request->input('account_name'),
@@ -472,6 +401,13 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+        $InsLienPre = DB::table('insured_items')
+        ->join('customers','insured_items.customer_id','=','customers.cus_id')
+        ->join('lien_infos','customers.cus_id','=','lien_infos.customer_id')
+        ->join('premium_calculations','customers.cus_id','=','premium_calculations.customer_id')
+        ->select('insured_items.*','lien_infos.*','premium_calculations.*')
+        ->get();
+
         $url = 'customer' . "/" . $id;
         $method = 'PUT';
         $btnText = "Update";
@@ -479,10 +415,16 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         $paymentDetail = PaymentDetail::where('customer_id',$id)->first();
         $driverDetail = DriverDetail::where('customer_id',$id)->get();
-        $customerOtherDetail = CustomerOtherDetail::where('customer_id',$id)->first();
-        $insuredItem = InsuredItem::where('customer_id',$id)->first();
-        $premiumCalculation = PremiumCalculation::where('customer_id',$id)->get();
-        return view('customer.edit',compact('customer','paymentDetail','driverDetail','customerOtherDetail','insuredItem','premiumCalculation','url','moreFieldFalse','method','btnText'));
+
+        $physicalAddress = PhysicalAddress::where('customer_id',$id)->first();
+        $mailingAddress = MailingAddress::where('customer_id',$id)->first();
+        $workBussinessAddress = WorkBussinessAddress::where('customer_id',$id)->first();
+        $datesAndAmount = DatesAndAmount::where('customer_id',$id)->first();
+        
+        // $insuredItem = InsuredItem::where('customer_id',$id)->get();
+        // $lienInfo = LienInfo::where('customer_id',$id)->get();
+        // $premiumCalculation = PremiumCalculation::where('customer_id',$id)->get();
+        return view('customer.edit',compact('customer','paymentDetail','driverDetail','physicalAddress','mailingAddress','workBussinessAddress','datesAndAmount','url','moreFieldFalse','method','btnText','InsLienPre'));
     }
 
     /**
@@ -492,100 +434,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CustomerFormRequest $request, Customer $customer)
     {
-        $request->validate([
-            // customer or lead info validations ==============
-            'cus_or_lead' => 'required',
-            'account_name' => 'required',
-            'cus_name' => 'required',
-            'eft' => 'required',
-            'cus_type' => 'required',
-            'status' => 'required',
-            'refferal_src' => 'required',
-            // payment detail validations =====================
-            // 'pay_type' => 'required',
-            // 'carrier_name' => 'required',
-            // 'policy_no' => 'required',
-            // 'due_amount' => 'required',
-            // 'due_date' => 'required',
-            // 'paid_date' => 'required',
-            // 'mode_of_pay' => 'required',
-            // 'received_by' => 'required',
-            // 'new_due_amount' => 'required',
-            // 'new_due_date' => 'required',
-            // driver detail validations ========================
-            //  'driver_name' => 'required',
-            //  'relationship' => 'required',
-            //  'f_name' => 'required',
-            //  'm_name' => 'required',
-            //  'l_name' => 'required',
-            //  'email' => 'required',
-            //  'phone' => 'required',
-            //  'gender' => 'required',
-            //  'dob' => 'required',
-            //  'ss_no' => 'required',
-            //  'id_no' => 'required',
-            //  'id_type' => 'required',
-            // // customer other details validations ===================
-            // 'phy_address' => 'required',
-            // 'city' => 'required',
-            // 'country' => 'required',
-            // 'state' => 'required',
-            // 'zip_code' => 'required',
-            // 'emp_or_bsn_name' => 'required',
-            // 'type_of_bsn_or_work' => 'required',
-            // 'rent_or_own' => 'required',
-            // 'mailing_addr' => 'required',
-            // 'ein_no' => 'required',
-            // 'bsn_or_work_phone' => 'required',
-            // 'bsn_web' => 'required',
-            // 'bsn_addr' => 'required',
-            // // insured items validations ================================
-            // 'Ins_com' => 'required',
-            // 'ins_policy_no' => 'required',
-            // 'type' => 'required',
-            // 'lh_name' => 'required',
-            // 'lh_account' => 'required',
-            // 'lh_addr' => 'required',
-            // 'lh_city' => 'required',
-            // 'lh_state' => 'required',
-            // 'lh_zip' => 'required',
-            // 'lh_con_name' => 'required',
-            // 'lh_phone_no' => 'required',
-            // 'lh_email' => 'required',
-            // 'lh_year' => 'required',
-            // 'lh_make' => 'required',
-            // 'lh_model' => 'required',
-            // 'lh_vin_no' => 'required',
-            // 'liability_limit' => 'required',
-            // 'comp_deductible' => 'required',
-            // 'collison_deductible' => 'required',
-            // 'um_uim_bi_deduct' => 'required',
-            // 'um_uim_pd' => 'required',
-            // 'rent_amount' => 'required',
-            // 'towing_amount' => 'required',
-            // 'gap' => 'required',
-            // 'pip_amount' => 'required',
-            // 'med_amount' => 'required',
-            // premium calculation validations ==================
-            // 'base_premium[]' => 'required',
-            // 'crime_prevention_fee[]' => 'required',
-            // 'policy_fee[]' => 'required',
-            // 'agency_fee[]' => 'required',
-            // 'total_premium[]' => 'required',
-            // 'exp_date[]' => 'required',
-            // 'reminder_date[]' => 'required',
-            // 'canc_notice_date[]' => 'required',
-            // 'pre_due_date[]' => 'required',
-            // 'next_amount_due[]' => 'required',
-            // 'pre_paid_date[]' => 'required',
-            // 'new_amount_due[]' => 'required',
-            // 'pre_new_due_date[]' => 'required',
-            // ============================
-            // 'customer_id' => 'required',
-        ]);
-
+        $request->validated();
         $customer = Customer::where('cus_id',$customer->cus_id)->update([
             'cus_or_lead' => $request->input('cus_or_lead'),
             'account_name' => $request->input('account_name'),
@@ -595,7 +446,6 @@ class CustomerController extends Controller
             'status' => $request->input('status'),
             'referral_src' => $request->input('refferal_src'),
         ]);
-        exit();
 
         // $paymentDetailData = [
         //     'typ_of_pay' => $request->input('pay_type'),
@@ -765,5 +615,19 @@ class CustomerController extends Controller
             // $customer->customer_other_details()->delete();
         }
         return redirect()->back()->with('success','record deleted successfully...!');
+    }
+
+    public function customerUpdate(Request $request , $id){
+        $customer = Customer::findOrFail($id);
+        if ($customer) {
+            $customer->update([
+                'cus_or_lead' => $request->input('cus_or_lead'),
+                'account_name' => $request->input('account_name'),
+                'eft' => $request->input('eft'),
+                'cus_type' => $request->input('cus_type'),
+                'status' => $request->input('status'),
+                'referral_src' => $request->input('refferal_src'),
+            ]);
+        }
     }
 }

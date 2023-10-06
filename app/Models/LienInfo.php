@@ -9,4 +9,9 @@ class LienInfo extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    // protected $table = "lien_infos";
+    // protected $primaryKey = 'id';
+    // public function customers(){
+    //     return $this->belongsTo(Customer::class);
+    // }
 }

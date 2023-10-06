@@ -326,7 +326,7 @@
                             <div class="col-sm-9">
                                 {{ Form::select('driver_name[]', ['named' => 'Named','rated' => 'Rated', 'excluded' => 'Excluded'], null, ['placeholder' => 'Named Driver...' , "class" => "form-control"]) }}
                                 @error("driver_name")
-                                <span class="text-danger">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             </div>
@@ -1442,9 +1442,10 @@
               function moreILP(){
                   var premiumSectionCloning = document.getElementById("cloneILPContainer");
                   var cloned = premiumSectionCloning.cloneNode(true);
-                  console.log(cloned.querySelectorAll('input').forEach((e) => {
-                    console.log(e.value = "");
-                  }));
+                  $nameCounter = 1;
+                  cloned.querySelectorAll('input').forEach((e) => {
+                    // e.setAttribute('name',)
+                  });
                   premiumSectionCloning.insertAdjacentElement("afterend",cloned);
                 }
             //   function morePremiums(){
