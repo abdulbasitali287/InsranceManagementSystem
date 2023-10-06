@@ -805,6 +805,7 @@
                             <div class="form-group row">
                             {{ Form::label("Insurance company","Insurance Company" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
+                                {{ Form::hidden('insurance_id[]', $InsLienPre->ins_id) }}
                                 {{ Form::text('ins_com[]', old('ins_com',$InsLienPre->ins_com) , ["class" => "form-control"]) }}
                                 @error("ins_com")
                                 <span class="text-danger">{{ $message }}</span>
@@ -1041,6 +1042,7 @@
                             <div class="form-group row">
                             {{ Form::label("item number","Item No." , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
+                                {{ Form::hidden('lien_info_id[]', $InsLienPre->lien_info_id) }}
                                 {{ Form::text('lh_item_no[]', old('lh_item_no',$InsLienPre->item_no) , ["class" => "form-control"]) }}
                                 @error("lh_item_no")
                                 <span class="text-danger">{{ $message }}</span>
@@ -1169,6 +1171,7 @@
                             <div class="form-group row">
                             {{ Form::label("base premium","Base Premium" , ["class" => "col-sm-3 col-form-label"]) }}
                             <div class="col-sm-9">
+                                {{ Form::hidden('prc_id[]', $InsLienPre->prc_id) }}
                                 {{ Form::text('base_premium[]', old('base_premium',$InsLienPre->base_premium) , ["class" => "form-control"]) }}
                                 @error("base_premium")
                                 <span class="text-danger">{{ $message }}</span>
