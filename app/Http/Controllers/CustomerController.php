@@ -436,16 +436,19 @@ class CustomerController extends Controller
      */
     public function update(CustomerFormRequest $request, Customer $customer)
     {
+        // echo "<pre>";
+        // echo "</pre>";
+        // exit();
         $request->validated();
-        $customer = Customer::where('cus_id',$customer->cus_id)->update([
-            'cus_or_lead' => $request->input('cus_or_lead'),
-            'account_name' => $request->input('account_name'),
-            'name' => $request->input('cus_name'),
-            'eft' => $request->input('eft'),
-            'cus_type' => $request->input('cus_type'),
-            'status' => $request->input('status'),
-            'referral_src' => $request->input('refferal_src'),
-        ]);
+        // $customer = Customer::where('cus_id',$customer->cus_id)->update([
+        //     'cus_or_lead' => $request->input('cus_or_lead'),
+        //     'account_name' => $request->input('account_name'),
+        //     'name' => $request->input('cus_name'),
+        //     'eft' => $request->input('eft'),
+        //     'cus_type' => $request->input('cus_type'),
+        //     'status' => $request->input('status'),
+        //     'referral_src' => $request->input('refferal_src'),
+        // ]);
 
         // $paymentDetailData = [
         //     'typ_of_pay' => $request->input('pay_type'),
@@ -462,7 +465,7 @@ class CustomerController extends Controller
             // 'customer_id' => $request->input('customer_id')
         // ];
         // PaymentDetail::where('customer_id',$customer->cus_id)->update($paymentDetailData);
-
+        $driver_id = $request->input('driver_id');
         $driver_name = $request->input('driver_name');
         $relationship = $request->input('relationship');
         $f_name = $request->input('f_name');
@@ -479,8 +482,11 @@ class CustomerController extends Controller
 
         
         for ($i=0; $i < count($driver_name); $i++) { 
+            
+            
+
             $driverSave = [
-                'driver_name' => $driver_name[$i], 
+                'driver_name' => $driver_name[$i],
                 'relationship' => $relationship[$i], 
                 'f_name' => $f_name[$i], 
                 'm_name' => $m_name[$i], 
@@ -495,7 +501,7 @@ class CustomerController extends Controller
                 'customer_id' => $customer->cus_id,
                 // 'customer_id' => $request->input('customer_id'), 
             ];
-            DriverDetail::where('customer_id',$customer->cus_id)->update($driverSave);
+            DriverDetail::where('customer_id',$customer->cus_id)->where('id',$driver_id[$i])->update($driverSave);
         }
         exit();
         
